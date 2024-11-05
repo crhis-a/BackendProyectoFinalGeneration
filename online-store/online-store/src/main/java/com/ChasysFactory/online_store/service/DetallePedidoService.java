@@ -16,24 +16,27 @@ public class DetallePedidoService implements IDetallePedidoService{
 
     @Override
     public void guardarDetallePedido(DetallePedido detallePedido){
-
+        detallePedidoRepository.save(detallePedido);
     }
     @Override
     public void eliminarDetallePedido(Long idDetallePedido){
-
+        detallePedidoRepository.deleteById(idDetallePedido);
     }
     @Override
     public DetallePedido buscarDetallePedido(Long idDetallePedido){
-
-        return null;
+            DetallePedido detallePedido=detallePedidoRepository.findById(idDetallePedido).orElse(null);
+        return detallePedido;
     }
     @Override
-    public void editarDetallePedido(Long idDetallePedido, int NuevoCantidadProducto, Double nuevoPrecioProducto,
-                                    int nuevoIdPedido, int nuevoIdProducto){
-
-
+    public void editarDetallePedido(Long idDetallePedido, int nuevoCantidadProducto, Double nuevoPrecioProducto
+                                   ){
+        DetallePedido detallePedido=this.buscarDetallePedido(idDetallePedido);
+        detallePedido.setCantidadProducto(nuevoCantidadProducto);
+        detallePedido.setPrecioProducto(nuevoPrecioProducto);
+        this.guardarDetallePedido(detallePedido);
 
     }
+    @Override
     public List<DetallePedido> listarDetallesPedido() {
 
 

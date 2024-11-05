@@ -1,12 +1,11 @@
 package com.ChasysFactory.online_store.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter @Setter
 @Entity
@@ -24,6 +23,9 @@ public class Producto {
     private String refrigeracion;
     private Character tamanoChasis;
     private int Stock;
+
+    @OneToMany(mappedBy = "apareceEn")
+    private List<DetallePedido> detallePedidos;
 
     public Producto() {
     }

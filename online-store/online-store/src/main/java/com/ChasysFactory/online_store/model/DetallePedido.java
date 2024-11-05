@@ -1,9 +1,6 @@
 package com.ChasysFactory.online_store.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,18 +13,25 @@ public class DetallePedido {
     private Long idDetallePedido;
     private int  cantidadProducto;
     private Double precioProducto;
-    private int idPedido;
-    private  int idProducto;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "idPedido")
+    private Pedido tiene;
+
+    @ManyToOne
+    @JoinColumn(name = "idProducto")
+    private Producto apareceEn;
 
     public DetallePedido() {
     }
 
-    public DetallePedido(Long idDetallePedido, int cantidadProducto, Double precioProducto, int idPedido, int idProducto) {
+    public DetallePedido(Long idDetallePedido, int cantidadProducto, Double precioProducto ) {
         this.idDetallePedido = idDetallePedido;
         this.cantidadProducto = cantidadProducto;
         this.precioProducto = precioProducto;
-        this.idPedido = idPedido;
-        this.idProducto = idProducto;
+
     }
 
     public Long getIdDetallePedido() {
@@ -42,13 +46,6 @@ public class DetallePedido {
         return precioProducto;
     }
 
-    public int getIdPedido() {
-        return idPedido;
-    }
-
-    public int getIdProducto() {
-        return idProducto;
-    }
 
     public void setIdDetallePedido(Long idDetallePedido) {
         this.idDetallePedido = idDetallePedido;
@@ -62,11 +59,5 @@ public class DetallePedido {
         this.precioProducto = precioProducto;
     }
 
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
 }

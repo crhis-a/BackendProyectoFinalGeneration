@@ -10,8 +10,8 @@ public interface IDetallePedidoService {
     public void guardarDetallePedido(DetallePedido detallePedido);
     public void eliminarDetallePedido(Long idDetallePedido);
     public DetallePedido buscarDetallePedido(Long idDetallePedido);
-    public void editarDetallePedido(Long idDetallePedido, int NuevoCantidadProducto, Double nuevoPrecioProducto,
-                                    int nuevoIdPedido, int nuevoIdProducto);
+    public void editarDetallePedido(Long idDetallePedido, int nuevoCantidadProducto, Double nuevoPrecioProducto
+                                    );
     public List<DetallePedido> listarDetallesPedido();
 }
 

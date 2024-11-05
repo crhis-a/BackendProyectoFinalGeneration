@@ -3,11 +3,13 @@ package com.ChasysFactory.online_store.service;
 import com.ChasysFactory.online_store.model.Pedido;
 import com.ChasysFactory.online_store.model.UsuarioRegistrado;
 import com.ChasysFactory.online_store.repository.IPedidoRepository;
+import com.ChasysFactory.online_store.repository.IUsuarioRegistradoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PedidoService implements IPedidoService {
@@ -15,11 +17,23 @@ public class PedidoService implements IPedidoService {
     @Autowired
     private IPedidoRepository pedidoRepository;
 
+
+    @Autowired
+    private IUsuarioRegistradoRepository usuarioRegistradoRepository;
+
+
+
+
+
+
     @Override
-    public void guardarPedido(Pedido pedido){
+    public void guardarPedido(Pedido pedido ){
+
         pedidoRepository.save(pedido);
 
     }
+
+
     @Override
     public void eliminarPedido(Long idPedido){
        pedidoRepository.deleteById(idPedido);
